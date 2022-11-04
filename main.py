@@ -1,17 +1,33 @@
-#STUDENT-GRADE
+#CONTACTS
 
 #list of names
 import random
 
-contacts = ["Dad", "Mom", "Crazy Neighbhor", "Siwon Mun", "Grandma", "Grandpa", "Auntie Susan", "Uncle Bo", "My Day 1", "Dwayne Johnson", "Vijay Aggarwal"]
+contacts = []
+
+contacts.append({
+  "name": "Geoge",
+  "phone": "555-5555",
+  "email": "george@mail.com"
+})
+
+contacts.append({
+  "name": "Tim",
+  "phone": "222-2222",
+  "email": "tim@mail.com"
+})
+
+contacts.append({
+  "name": "Siwon Mun",
+  "phone": "777-7777",
+  "email": "siwonmun@mail.com"
+})
 
 #LOOP 
 loop = True
 while loop: 
 
   #CONTACT LIST 
-    
-    dadinfo = ("780-255-6934")
     
     #PRINT MENU
     print("MAIN MENU")
@@ -50,7 +66,7 @@ while loop:
     elif select == "3":
 
         #FIND CONTACT
-        searchcontact = input("WHICH CONTACT WOULD YOU LIKE TO CONTACT? ") 
+        searchcontact = input("WHICH CONTACT WOULD YOU LIKE TO EDIT? ") 
         for x in contacts:
           if x == searchcontact:
             print("CONTACT FOUND: ", x)
@@ -60,7 +76,7 @@ while loop:
 
             #EDIT CONTACT
             editcontact = input("EDIT CONTACT: ")
-            contacts = (dadinfo)
+            contacts = (editcontact)
             print("Current name is", contacts)
 
 
@@ -88,3 +104,4 @@ while loop:
     elif select == "6":
         print ("EXIT")
         loop = False
+    
