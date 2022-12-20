@@ -1,37 +1,10 @@
-#CONTACTS
+#CONTACT ASSIGNMENT
+contacts = []  # list to store all the contacts
 
-#list of names
-import random
-
-contacts = []
-
-contacts.append({
-  "name": "Geoge",
-  "phone": "555-5555",
-  "email": "george@mail.com"
-})
-
-contacts.append({
-  "name": "Tim",
-  "phone": "222-2222",
-  "email": "tim@mail.com"
-})
-
-contacts.append({
-  "name": "Siwon Mun",
-  "phone": "777-7777",
-  "email": "siwonmun@mail.com"
-})
-
-#LOOP 
 loop = True
-while loop: 
-
-  #CONTACT LIST 
-    
-    #PRINT MENU
-    print("MAIN MENU")
-
+while loop:
+    # Display the main menu
+    print("Main Menu")
     print("1. Display Contact Names")
     print("2. Search for Contact")
     print("3. Edit Contact")
@@ -39,69 +12,65 @@ while loop:
     print("5. Remove Contact")
     print("6. Exit")
 
-    #Selection From User
-    select = input ("Enter Selection (1-6): ")
+    # Get the user's choice
+    choice = int(input("Enter Selection (1-6): "))
 
-    #First Selection 
-    if select == "1":
-        print("DISPLAY ALL CONTACTS")
-        print("ALL CONTACTS")
-        for contactid in contacts:
-          print(contactid)
+    if choice == 1:
+        # Display all contact names
+        for contact in contacts:
+            print(contact['name'])
 
+    elif choice == 2:
+        # Search for a contact
+        name = input("Which contact would you like to search for?: ")
+        found = False 
+        for contact in contacts:
+            if contact['name'] == name:
+                found = True
+                print("Name:", contact['name'])
+                print("Phone:", contact['phone'])
+                print("Email:", contact['email'])
+                break
+        if not found:
+            print("Contact not found")
 
-    #Second Selection
-    elif select == "2":
-        print("SEARCH FOR CONTACT")
-        searchcontact = input("WHICH CONTACT WOULD YOU LIKE TO SEARCH FOR? ") 
-        for x in contacts:
-          if x == searchcontact:
-            print("CONTACT FOUND: ", x)
-          else: 
-            if x not in contacts:
-              print("CONTACT NOT FOUND")  
-      
-          
-    #Third Selection    
-    elif select == "3":
+    elif choice == 3:
+        # Edit a contact
+        name = input("Select a contact to edit: ")
+        found = False 
+        for contact in contacts:
+            if contact['name'] == name:
+                found = True
+                # Update the contact information
+                contact['name'] = input("Enter the new name: ")
+                contact['phone'] = input("Enter the new phone number: ")
+                contact['email'] = input("Enter the new email address: ")
+                break
+        if not found:
+            print("Contact not found")
 
-        #FIND CONTACT
-        searchcontact = input("WHICH CONTACT WOULD YOU LIKE TO EDIT? ") 
-        for x in contacts:
-          if x == searchcontact:
-            print("CONTACT FOUND: ", x)
-          else: 
-            if x not in contacts:
-              print("CONTACT NOT FOUND")  
+    elif choice == 4:
+        # Add a new contact
+        name = input("Enter the name of the new contact: ")
+        phone = input("Enter the phone number of the new contact: ")
+        email = input("Enter the email address of the new contact: ")
 
-            #EDIT CONTACT
-            editcontact = input("EDIT CONTACT: ")
-            contacts = (editcontact)
-            print("Current name is", contacts)
+        contacts.append({'name': name, 'phone': phone, 'email': email})
 
+    elif choice == 5:
+        # Remove a contact
+        name = input("Select a contact to remove: ")
+        found = False  
+        for i, contact in enumerate(contacts):
+            if contact['name'] == name:
+                found = True
+                # Remove the contact from the list
+                del contacts[i]
+                break
+        if not found:
+            print("Contact not found")
 
-    #Fourth Selection
-    elif select == "4":
-      print("ADD A CONTACT")
-      chosencontact = input("ENTER A CONTACT TO ADD: ")
-      if chosencontact in contacts:
-        print("CONTACT ALREADY EXISTS")
-      else: 
-        print(chosencontact, "HAS BEEN ADDED TO CONTACT LIST")
-        contacts.append(chosencontact)
-
-    #Fifth Selection
-    elif select == "5":
-        print("DELETE CONTACT: ")
-        chosencontact = input("WHICH CONTACT WOULD YOU LIKE TO DELETE?: ")
-        if chosencontact not in contacts:
-          print("CONTACT DOES NOT EXIST")
-        else:
-          contacts.remove(chosencontact)
-          print("CONTACT HAS BEEN SUCCESFULLY DELETED")
-
-    #Fifth Selection
-    elif select == "6":
-        print ("EXIT")
+    elif choice == 6:
+        # Exit the program
         loop = False
     
